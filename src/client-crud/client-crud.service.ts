@@ -9,19 +9,33 @@ export class ClientCrudService {
     return await this.prisma.client.create({data: createClientCrudDto});
   }
 
-  findAll() {
-    return `This action returns all clientCrud`;
+  async findAll() {
+    return  await this.prisma.client.findMany({});
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} clientCrud`;
+  async findOne(id: string) {
+    return await this.prisma.client.findUnique({
+      where: {
+        id
+      }
+    });
   }
 
-  update(id: string, updateClientCrudDto: Prisma.ClientUpdateInput) {
-    return `This action updates a #${id} clientCrud`;
+  async update(id: string, updateClientCrudDto: Prisma.ClientUpdateInput) {
+    return await this.prisma.client.update({
+      where:{
+        id
+      },
+      data: updateClientCrudDto
+      
+    });
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} clientCrud`;
+  async remove(id: string) {
+    return await this.prisma.client.delete({
+      where: {
+        id
+      }
+    })
   }
 }
