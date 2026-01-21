@@ -15,8 +15,10 @@ datasource db {
 
 model Client {
   id       String @id @default(uuid())
-  name     String
-  lastname String
-  number   String
+  nom      String
+  postnom  String
+  numero   String
+  statut   Boolean
+  quantite String
   email    String
 }
